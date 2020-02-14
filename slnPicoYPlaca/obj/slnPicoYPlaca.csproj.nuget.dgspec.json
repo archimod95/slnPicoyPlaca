@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\AntonioLopez\\source\\repos\\slnPicoYPlaca\\slnPicoYPlaca\\slnPicoYPlaca.csproj": {}
+    "C:\\Users\\AntonioLopez\\Source\\Repos\\archimod95\\slnPicoyPlaca\\slnPicoYPlaca\\slnPicoYPlaca.csproj": {}
   },
   "projects": {
-    "C:\\Users\\AntonioLopez\\source\\repos\\slnPicoYPlaca\\slnPicoYPlaca\\slnPicoYPlaca.csproj": {
+    "C:\\Users\\AntonioLopez\\Source\\Repos\\archimod95\\slnPicoyPlaca\\slnPicoYPlaca\\slnPicoYPlaca.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\AntonioLopez\\source\\repos\\slnPicoYPlaca\\slnPicoYPlaca\\slnPicoYPlaca.csproj",
+        "projectUniqueName": "C:\\Users\\AntonioLopez\\Source\\Repos\\archimod95\\slnPicoyPlaca\\slnPicoYPlaca\\slnPicoYPlaca.csproj",
         "projectName": "slnPicoYPlaca",
-        "projectPath": "C:\\Users\\AntonioLopez\\source\\repos\\slnPicoYPlaca\\slnPicoYPlaca\\slnPicoYPlaca.csproj",
+        "projectPath": "C:\\Users\\AntonioLopez\\Source\\Repos\\archimod95\\slnPicoyPlaca\\slnPicoYPlaca\\slnPicoYPlaca.csproj",
         "packagesPath": "C:\\Users\\AntonioLopez\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\AntonioLopez\\source\\repos\\slnPicoYPlaca\\slnPicoYPlaca\\obj\\",
+        "outputPath": "C:\\Users\\AntonioLopez\\Source\\Repos\\archimod95\\slnPicoyPlaca\\slnPicoYPlaca\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",

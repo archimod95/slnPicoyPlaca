@@ -10,19 +10,20 @@ namespace slnPicoYPlaca
         static List<string> siglas = new List<string>();
         static List<string> provincias = new List<string>();
         static string lic = null;
-        
         static DateTime Fecha = new DateTime();
         static int hora = -1;
+        static int minuto = -1;
         static string inputdate = null;
         static string selectedstate = null;
         static void Main(string[] args)
         {
-            //Load posible license plate number
+            //Cargar siglas de autos 
             siglas = LoadLoadSiglas(siglas);
-            //Load Ecudorian States
+            //Cargar Provincias
             provincias = LoadProvincias(provincias);
-            // Ask for License plate number
+            // Preguntar por la placa del carro
             Console.WriteLine("Ingrese la matricula o placa a validar , y presione la tecla Enter");
+            //Validación de información de placa y llamada de proceso
             bool cont = true;
             while (cont)
             {
@@ -44,6 +45,7 @@ namespace slnPicoYPlaca
                 }
 
             }
+            //Validación de información referente a fecha y validación de formato
             bool fecha = true;
             while (fecha)
             {
@@ -59,27 +61,17 @@ namespace slnPicoYPlaca
                     Console.WriteLine("Ingreso de fecha erronea.\nIngrese la Fecha (YYYY-MM-dd), y presione la tecla Enter");
                 }              
             }
+            //Validación de información referente a la hora de circulación, validación de formato, y llamada de proces
             bool horaval = true;
             while (horaval)
             {
                 string inputhora = Convert.ToString(Console.ReadLine());
-                bool val = ValidarHora(inputhora);
-                bool valrango = ValidarRangoHora(hora);
+                bool val = ValidarHora(inputhora,"hora");
+                bool valrango = ValidarRangoHora(hora,"hora");
                 if (val && valrango)
                 {
-                    int lastdigit = int.Parse(lic.Substring((lic.Length - 1), 1));
-                    bool valcirculacion = ValidarCirculamientio(lastdigit, hora);
-
-                    if (valcirculacion)
-                    {
-                        Console.WriteLine("Su carro con placas:" + lic + "\nProveniente de la provincia de:" + selectedstate + "\nPuede circular con normalidad en el distrito Metropolinato de quito");
-                        Environment.Exit(0);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Su carro con placas: " + lic + "\nProveniente de la provincia de: " + selectedstate + "\n No puede circular con normalidad en el distrito Metropolinato de quito");
-                        Environment.Exit(0);
-                    }
+                    horaval = false;
+                    Console.WriteLine("Ingrese los minutos de la hora seleccionada, y presione la tecla Enter");
                 }
                 else if(!val)
                 {
@@ -89,16 +81,55 @@ namespace slnPicoYPlaca
                     Console.WriteLine("Ingreso de hora erronea.\nSolo se permite ingresar valores enteros entre 0 - 24. \nIngrese nuevamente el valor");
                 }
                 
-            }            
+            }
+            //Validación de información referente a la minutos de circulación, validación de formato, y llamada de proces
+            bool minval = true ;
+            while (minval)
+            {
+                string inputmin = Convert.ToString(Console.ReadLine());
+                bool valmin = ValidarHora(inputmin,"minuto");
+                bool valminrango = ValidarRangoHora(minuto, "minuto");
+                if (valmin && valminrango)
+                {
+                    int lastdigit = int.Parse(lic.Substring((lic.Length - 1), 1));
+                    bool valcirculacion = ValidarCirculamientio(lastdigit, hora);
+                    if (valcirculacion)
+                    {
+                        Console.WriteLine("Su carro con placas:" + lic + "\nProveniente de la provincia de:" + selectedstate + "\nPuede circular con normalidad en el distrito Metropolinato de quito en la hora"+hora+":"+minuto);
+                        Environment.Exit(0);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Su carro con placas: " + lic + "\nProveniente de la provincia de: " + selectedstate + "\n No puede circular con normalidad en el distrito Metropolinato de quito en la hora:" + hora + ":" + minuto);
+                        Environment.Exit(0);
+                    }
+                }
+                else if (!valmin)
+                {
+                    Console.WriteLine("Ingreso de minutos herroneo.\nSolo se permite ingresar valores enteros entre 0 - 59, no valores de tipo cadena.\nIngrese nuevamente el valor");
+                }
+                else if (!valminrango)
+                {
+                    Console.WriteLine("Ingreso de hora erronea.\nSolo se permite ingresar valores enteros entre 0 - 59. \nIngrese nuevamente el valor");
+                }
+            }
         }
         
-        //Evaluar entrada hora
-        private static bool ValidarHora(string horaingresada)
+        //Evaluar hora y minuto ingresado
+        private static bool ValidarHora(string horaingresada, string tipo)
         {
             int output = -1;
             if (int.TryParse(horaingresada, out output))
             {
-                hora = output;
+                if (tipo=="hora")
+                {
+                    hora = output;
+                }
+                else if(tipo=="minuto")
+                {
+                    minuto = output;
+                }
+                
                 return true;
             }
             else
@@ -108,19 +139,37 @@ namespace slnPicoYPlaca
             
         }
         //Evaluar rangos hora
-        private static bool ValidarRangoHora(int horaingresada)
+        private static bool ValidarRangoHora(int input, string tipo)
         {
-            if (horaingresada>=0 && horaingresada<=24)
+            if (tipo=="hora")
             {
-                return true;
+                if (input >= 0 && input <= 24)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }else if (tipo=="minuto")
+            {
+                if (input >= 0 && input < 60)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             else
             {
                 return false;
             }
             
+            
         }
-        //Evaluar Placa
+        //Evaluar Si puede circular o no el vehiculo
         private static bool ValidarCirculamientio(int numero, int hora)
         {
             int dayoftheweek=(int)Fecha.DayOfWeek;           
@@ -129,8 +178,19 @@ namespace slnPicoYPlaca
                 case 1:
                     if (numero==1 || numero==2)
                     {
-                        if (hora>=5 && hora<=24)
+                        if (hora>=7 && hora<=9)
                         {
+                            if (hora==9 && minuto>=30)
+                            {
+                                return true;
+                            }
+                            return false;
+                        }else if (hora>=16 && hora<=19)
+                        {
+                            if (hora == 19 && minuto >= 30)
+                            {
+                                return true;
+                            }
                             return false;
                         }
                         else
@@ -146,8 +206,20 @@ namespace slnPicoYPlaca
                 case 2:
                     if (numero == 3 || numero == 4)
                     {
-                        if (hora >= 5 && hora <= 24)
+                        if (hora >= 7 && hora <= 9)
                         {
+                            if (hora == 9 && minuto >= 30)
+                            {
+                                return true;
+                            }
+                            return false;
+                        }
+                        else if (hora >= 16 && hora <= 19)
+                        {
+                            if (hora == 19 && minuto >= 30)
+                            {
+                                return true;
+                            }
                             return false;
                         }
                         else
@@ -163,8 +235,20 @@ namespace slnPicoYPlaca
                 case 3:
                     if (numero == 5 || numero == 6)
                     {
-                        if (hora >= 5 && hora <= 24)
+                        if (hora >= 7 && hora <= 9)
                         {
+                            if (hora == 9 && minuto >= 30)
+                            {
+                                return true;
+                            }
+                            return false;
+                        }
+                        else if (hora >= 16 && hora <= 19)
+                        {
+                            if (hora == 19 && minuto >= 30)
+                            {
+                                return true;
+                            }
                             return false;
                         }
                         else
@@ -181,8 +265,20 @@ namespace slnPicoYPlaca
                 case 4:
                     if (numero == 7 || numero == 8)
                     {
-                        if (hora >= 5 && hora <= 24)
+                        if (hora >= 7 && hora <= 9)
                         {
+                            if (hora == 9 && minuto >= 30)
+                            {
+                                return true;
+                            }
+                            return false;
+                        }
+                        else if (hora >= 16 && hora <= 19)
+                        {
+                            if (hora == 19 && minuto >= 30)
+                            {
+                                return true;
+                            }
                             return false;
                         }
                         else
@@ -197,8 +293,20 @@ namespace slnPicoYPlaca
                 case 5:
                     if (numero == 9 || numero == 0)
                     {
-                        if (hora >= 5 && hora <= 24)
+                        if (hora >= 7 && hora <= 9)
                         {
+                            if (hora == 9 && minuto >= 30)
+                            {
+                                return true;
+                            }
+                            return false;
+                        }
+                        else if (hora >= 16 && hora <= 19)
+                        {
+                            if (hora == 19 && minuto >= 30)
+                            {
+                                return true;
+                            }
                             return false;
                         }
                         else
@@ -219,7 +327,7 @@ namespace slnPicoYPlaca
             return false;
 
         }
-
+        //Evaluar Placa
         private static int ValidarPlaca(string placa)
         {
             placa = placa.ToUpper();
@@ -276,7 +384,7 @@ namespace slnPicoYPlaca
                 return 2;
             }   
         }
-
+        //Procedimiento de carga de siglas relación con provincias en el mismo orden al que corresponde
         private static List<string> LoadLoadSiglas(List<string> siglas)
         {
             siglas.Add("A");
@@ -305,7 +413,7 @@ namespace slnPicoYPlaca
             siglas.Add("J");
             return siglas;
         }
-
+        //Procedimiento de carga de provincias con siglas en el mismo orden al que corresponde
         private static List<string> LoadProvincias(List<string> provincias)
         {
             provincias.Add("Azuay");

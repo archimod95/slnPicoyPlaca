@@ -9,3 +9,14 @@ C:\Users\AntonioLopez\source\repos\slnPicoYPlaca\slnPicoYPlaca\obj\Debug\netcore
 C:\Users\AntonioLopez\source\repos\slnPicoYPlaca\slnPicoYPlaca\obj\Debug\netcoreapp3.1\slnPicoYPlaca.AssemblyInfo.cs
 C:\Users\AntonioLopez\source\repos\slnPicoYPlaca\slnPicoYPlaca\obj\Debug\netcoreapp3.1\slnPicoYPlaca.dll
 C:\Users\AntonioLopez\source\repos\slnPicoYPlaca\slnPicoYPlaca\obj\Debug\netcoreapp3.1\slnPicoYPlaca.pdb
+C:\Users\AntonioLopez\Source\Repos\archimod95\slnPicoyPlaca\slnPicoYPlaca\bin\Debug\netcoreapp3.1\slnPicoYPlaca.exe
+C:\Users\AntonioLopez\Source\Repos\archimod95\slnPicoyPlaca\slnPicoYPlaca\bin\Debug\netcoreapp3.1\slnPicoYPlaca.deps.json
+C:\Users\AntonioLopez\Source\Repos\archimod95\slnPicoyPlaca\slnPicoYPlaca\bin\Debug\netcoreapp3.1\slnPicoYPlaca.runtimeconfig.json
+C:\Users\AntonioLopez\Source\Repos\archimod95\slnPicoyPlaca\slnPicoYPlaca\bin\Debug\netcoreapp3.1\slnPicoYPlaca.runtimeconfig.dev.json
+C:\Users\AntonioLopez\Source\Repos\archimod95\slnPicoyPlaca\slnPicoYPlaca\bin\Debug\netcoreapp3.1\slnPicoYPlaca.dll
+C:\Users\AntonioLopez\Source\Repos\archimod95\slnPicoyPlaca\slnPicoYPlaca\bin\Debug\netcoreapp3.1\slnPicoYPlaca.pdb
+C:\Users\AntonioLopez\Source\Repos\archimod95\slnPicoyPlaca\slnPicoYPlaca\obj\Debug\netcoreapp3.1\slnPicoYPlaca.csprojAssemblyReference.cache
+C:\Users\AntonioLopez\Source\Repos\archimod95\slnPicoyPlaca\slnPicoYPlaca\obj\Debug\netcoreapp3.1\slnPicoYPlaca.AssemblyInfoInputs.cache
+C:\Users\AntonioLopez\Source\Repos\archimod95\slnPicoyPlaca\slnPicoYPlaca\obj\Debug\netcoreapp3.1\slnPicoYPlaca.AssemblyInfo.cs
+C:\Users\AntonioLopez\Source\Repos\archimod95\slnPicoyPlaca\slnPicoYPlaca\obj\Debug\netcoreapp3.1\slnPicoYPlaca.dll
+C:\Users\AntonioLopez\Source\Repos\archimod95\slnPicoyPlaca\slnPicoYPlaca\obj\Debug\netcoreapp3.1\slnPicoYPlaca.pdb
